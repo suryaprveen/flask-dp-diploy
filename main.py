@@ -13,8 +13,21 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import LoginManager,UserMixin,login_user,login_required,logout_user,current_user
 
 app=Flask(__name__)
-app.config['SECRET_KEY']='Thisissupposedtobesecret!'
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:Helsinki@localhost:5432/users'
+
+ENV='prod'
+if ENV == 'dev':
+    app.debug = True
+    app.config[ 'SQLALCHEMY_DATABASE_URI' ] = 'postgresql://postgres:Helsinki@localhost:5432/users'
+
+    # app.config[ 'SECRET_KEY' ] = 'Thisissupposedtobesecret!'
+
+else:
+    app.debug = False
+    app.config[ 'SQLALCHEMY_DATABASE_URI' ] = 'postgres://rtbffznecealgc:f45be3e0b004222b995d3838ddc5d81883664b516cefacc47990f6254a794222@ec2-52-6-143-153.compute-1.amazonaws.com:5432/d2ommkfg38o6e2'
+
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 Bootstrap(app)
 db=SQLAlchemy(app)
 login_manager = LoginManager()
@@ -32,6 +45,11 @@ class Database(UserMixin,db.Model):
     username=db.Column(db.String(50),unique=True)
     email=db.Column(db.String(50),unique=True)
     password=db.Column(db.String(80))
+
+    def __init__(self,username,email,password):
+        self.username=username
+        self.email=email
+        self.password=password
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -127,4 +145,4 @@ def dropsession():
 
 if __name__=="__main__":
 
-    app.run(debug=True)
+    app.run()
