@@ -1,0 +1,3 @@
+  background: #040404 url("static/img/earth.png") top right no-repeat;
+  background: transparent;
+  background: #040404 url("./img/earth1.jpg");
