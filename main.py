@@ -1,7 +1,9 @@
 import os
 from datetime import timedelta
 
+import click
 from flask import Flask, render_template, redirect, url_for, flash, session, request, g
+from flask.cli import with_appcontext
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField
@@ -102,6 +104,11 @@ def dashboard():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@click.command(name='create_tables')
+@with_appcontext
+def create_tables():
+    db.create_all()
 
 
 @app.before_request
