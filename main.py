@@ -12,7 +12,7 @@ from flask_login import LoginManager,UserMixin,login_user,login_required,logout_
 
 app=Flask(__name__)
 app.config['SECRET_KEY']='Thisissupposedtobesecret!'
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:Helsinki@localhost:5432/users'
+app.config['SQLALCHEMY_DATABASE_URI']='DATABASE_URL'
 Bootstrap(app)
 db=SQLAlchemy(app)
 login_manager = LoginManager()
