@@ -19,12 +19,12 @@ if ENV == 'dev':
     app.debug = True
     app.config[ 'SQLALCHEMY_DATABASE_URI' ] = 'postgresql://postgres:Helsinki@localhost:5432/users'
 
-    # app.config[ 'SECRET_KEY' ] = 'Thisissupposedtobesecret!'
 
 else:
     app.debug = False
     app.config[ 'SQLALCHEMY_DATABASE_URI' ]=' postgres://jfrjcnkutalcef:72270166de3c5782bf3abdfb677f039558f1c4d21d53b6758c51b8f96424ed49@ec2-3-223-21-106.compute-1.amazonaws.com:5432/d3v7gj3hjsf4k8'
 
+app.config[ 'SECRET_KEY' ] = 'Thisissupposedtobesecret!'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
