@@ -29,16 +29,19 @@ label {
   color:white;
 }
 
+@media only screen and (min-device-width: 481px) {
 body::before {
   content: "";
   position: fixed;
-    background: #040404 url("./img/earth1.jpg");
+    background: #040404 url("./img/earth1.jpg") no-repeat top center fixed;
 
   background-size: cover;
   left: 0;
   right: 0;
   top: 0;
   height: 100vh;
+
+}
 }
 
 @media (min-width: 1024px) {
