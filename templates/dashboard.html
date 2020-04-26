@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +6,24 @@
       <meta charset="utf-8">
       <title>Bokeh Plot</title>
 
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+
+
+         <link rel="stylesheet" href="{{url_for('.static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+         <link rel="stylesheet" href="{{url_for('.static', filename='vendor/icofont/icofont.min.css')}}" rel="stylesheet">
+         <link rel="stylesheet" href="{{url_for('.static', filename='vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+         <link rel="stylesheet" href="{{url_for('.static', filename='vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+         <link rel="stylesheet" href="{{url_for('.static', filename='vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+         <link rel="stylesheet" href="{{url_for('.static', filename='vendor/venobox/venobox.css')}}" rel="stylesheet">
+         <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.css" rel="stylesheet">
 
 
         <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.0.2.min.css" type="text/css" />
+        <link rel="stylesheet" href="{{url_for('.static', filename='style.css')}}">
 
 
 
@@ -21,15 +31,46 @@
         <script type="text/javascript">
             Bokeh.set_log_level("info");
         </script>
+        <script  src="{{url_for('.static', filename='vendor/jquery/jquery.min.js')}}" rel="stylesheet"></script>
+        <script  src="{{url_for('.static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script  src="{{url_for('.static', filename='vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+        <script  src="{{url_for('.static', filename='vendor/php-email-form/validate.js')}}" ></script>
+        <script  src="{{url_for('.static', filename='vendor/waypoints/jquery.waypoints.min.js')}}"></script>
+        <script  src="{{url_for('.static', filename='vendor/counterup/counterup.min.js')}}" ></script>
+        <script  src="{{url_for('.static', filename='vendor/owl.carousel/owl.carousel.min.js')}}"></script>
+        <script  src="{{url_for('.static', filename='vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+        <script  src="{{url_for('.static', filename='vendor/jquery/jquery.min.js')}}"></script>
+        <script  src="{{url_for('.static', filename='vendor/venobox/venobox.min.js')}}"></script>
 
 
+        <style>
 
+        .user1{
+
+            color:orange;
+
+        }
+
+        </style>
 
   </head>
 
 
   <body>
+                 <h4 class="user">Welcome {{user}}</h4>
 
+     <div class="container">
+
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#header">Home</a></li>
+
+          <li><a href="/logout">Logout</a></li>
+           <li class="user1">Welcome {{user}}</li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
 
 
 
@@ -79,7 +120,7 @@
             else document.addEventListener("DOMContentLoaded", fn);
           })();
         </script>
-
+</div>
   </body>
   
 </html>
