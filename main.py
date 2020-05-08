@@ -12,7 +12,11 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import LoginManager,UserMixin,login_user,login_required,logout_user,current_user
 
+# Created a Flask instance
+
 app=Flask(__name__)
+
+# Here below code states that based on the environment(Production or environment) it will connect to that particular database
 
 ENV='prod'
 if ENV == 'dev':
@@ -39,6 +43,7 @@ login_manager.refresh_view = 'relogin'
 login_manager.needs_refresh_message = (u"Session timedout, please re-login")
 login_manager.needs_refresh_message_category = "info"
 
+# Here below is the class created for the structure of our table in the database
 
 class Database(UserMixin,db.Model):
     id=db.Column(db.Integer,primary_key=True)
@@ -55,10 +60,15 @@ class Database(UserMixin,db.Model):
 def load_user(user_id):
     return Database.query.get(int(user_id))
 
+# Method for login form which takes the inputs from the user when user submits the login form
+
 class LoginForm(FlaskForm):
     username=StringField('username',validators=[InputRequired(),Length(min=4,max=15)])
     password=PasswordField('password',validators=[InputRequired(),Length(min=8,max=80)])
     remember=BooleanField('remember me')
+
+
+# Method for registration form which takes the inputs from the user when user submits the registration form
 
 
 class RegisterForm(FlaskForm):
@@ -67,9 +77,14 @@ class RegisterForm(FlaskForm):
     username = StringField('username', validators=[ InputRequired(), Length(min=4, max=15) ])
     password = PasswordField('password', validators=[ InputRequired(), Length(min=8, max=80) ])
 
+# Below are the routes created so on typing particular route it navigates to that page
+
+# Route for Home page
 @app.route('/')
 def index():
     return render_template('test.html')
+
+# Route for the login page
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -94,6 +109,8 @@ def login():
 
     return render_template('login.html',form=form)
 
+# Route for the signup page
+
 @app.route('/signup',methods=['GET','POST'])
 def signup():
     form=RegisterForm()
@@ -108,6 +125,7 @@ def signup():
         return redirect(url_for('login'))
     return render_template('signup.html',form=form)
 
+# Route for the dashboard
 
 @app.route('/dashboard')
 @login_required
@@ -116,6 +134,7 @@ def dashboard():
         # return render_template('dashboard.html',name=current_user.username)
         return render_template('dashboard.html',user=session['user'])
 
+# Logout route
 
 @app.route('/logout')
 @login_required
@@ -123,6 +142,8 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+
+# Method for creating tables that as specified by the Database class above
 @click.command(name='create_tables')
 @with_appcontext
 def create_tables():
@@ -142,6 +163,8 @@ def before_request():
 def dropsession():
     session.pop('user',None)
     return reversed('login.html')
+
+# Program starts from here
 
 if __name__=="__main__":
 

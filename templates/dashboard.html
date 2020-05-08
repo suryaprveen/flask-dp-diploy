@@ -43,19 +43,11 @@
         <script  src="{{url_for('.static', filename='vendor/venobox/venobox.min.js')}}"></script>
 
 
-        <style>
 
-        .user{
-
-            color:white;
-
-        }
-
-        </style>
 
   </head>
 
-         <h2 class="user">Welcome {{user}}</h2>
+         <h2 class="User1">Welcome {{user}}</h2>
 
 
   <body>
@@ -65,10 +57,12 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#header">Home</a></li>
+          <li class="active"><a href="/">Home</a></li>
 
           <li><a href="/logout">Logout</a></li>
-           <li class="user1">Welcome {{user}}</li>
+          <li style="color:orange;"><a "href="#header">Welcome {{user}}</a></li>
+
+         <!--<li class="User1">Welcome {{user}}</li>-->
 
         </ul>
       </nav><!-- .nav-menu -->
