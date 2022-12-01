@@ -26,7 +26,8 @@ if ENV == 'dev':
 
 else:
     app.debug = False
-    app.config[ 'SQLALCHEMY_DATABASE_URI' ]='postgres://itgvuolffichta:3d617d6c163bf5934a114a337da13e3259c6c364e76efc8b25c3b798ed53894f@ec2-52-21-128-9.compute-1.amazonaws.com:5432/d57ckg043mlgek'
+    app.config[ 'SQLALCHEMY_DATABASE_URI' ]='postgres://itgvuolffichta:3d617d6c163bf5934a114a337da13e3259c6c364e76efc8b25c3b798ed53894f@ec2-52-21-128-9.compute-1.amazonaws.com:5432/d57ckg043mlgek
+'
 
 app.config[ 'SECRET_KEY' ] = 'Thisissupposedtobesecret!'
 
